@@ -4,7 +4,14 @@ function pseudohachage (chaine) {
     condensat=0 //En cryptographie, le condensat est synonyme de hash ou empreinte, résultat de l'application d'une fonction de hachage sur un message (ou, dans le domaine informatique, sur un fichier).
 
     for (let i = 0; i < chaine.length; i++) {
-        condensat += chaine.charCodeAt(i) *100**(i+1) % (2**256)  // .charCodeAt retourne un entier compris entre 0 et 65535 qui correspond au code UTF-16 d'un caractère de la chaîne situé à une position donnée.
+        condensat += chaine.charCodeAt(i) *100**(i+1) % (2**256)  
+        /* .charCodeAt retourne un entier compris entre 0 et 65535 
+        qui correspond au code UTF-16 d'un caractère de la chaîne située à une position donnée.
+
+        % (2**256) ici on passe le nombre au formaat 256 bits
+
+
+        */
     }
 
     // notre condensat ne doit jamais etre egal pour ne pas qu'il y ai de collision
@@ -32,9 +39,6 @@ Example
 Convert the string "abc" into a stream of binary data:
 var buf = Buffer.from('abc');
 console.log(buf);
-
-
-
 
 */
 
