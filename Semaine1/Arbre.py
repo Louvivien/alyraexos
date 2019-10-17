@@ -32,41 +32,68 @@ class Noeud:
             self.droite = None
             self.valeur = v  
 
-    
+   
+            
+        
+        
 class Arbre:
     def __init__(self):
         print("initarbre")
         self.racine = None 
 
     def ajouter(self, val):
-        print("ajouter1")
         if(self.racine == None):  #si pas de racine devient la racine
+            print("la racine est vide")
+            print("on affecte la valeur a la racine")
             self.racine = Noeud(val)
         else:
-            self._ajouter(val, self.racine)
+            print("la racine n'est pas vide")
+            self._ajouter(val, self.racine) #sinon ajouter2
 
+    def _ajouter(self, val, nd): #ajouter2
+            print("on affecte la valeur a une branche")
+            if(val < nd.valeur  ): #si la valeur est inferieure a la valeur du noeuf
+                if(nd.gauche is not None): 
+                    self._ajouter(val, nd.gauche)
+                    print("on ajoute une feuille a gauche")
 
-    def _ajouter(self, val, nd):
-        print("ajouter2")
-        if(val < nd.valeur  ): #sinon il se met le plus a gauche
-            if(nd.gauche is not None):
-                self._ajouter(val, nd.gauche)
+                else:
+                    nd.gauche = Noeud(val)
+                    print("le noeud prend la valeur a gauche")
             else:
-                nd.gauche = Noeud(val)
+                if(nd.droite is not None):
+                    self._ajouter(val, nd.droite)
+                    print("on ajoute une feuille a droite")
+                else:
+                    nd.droite = Noeud(val)
+                    print("le noeud prend la valeur a droite")     
+
+
+    def afficher(self):
+        if (self.racine == None): 
+            print ("l'arbre est vide")
         else:
-            if(nd.droite is not None):
-                self._ajouter(val, nd.droite)
-            else:
-                nd.droite = Noeud(val)
+            print("la racine n'est pas vide")
+            x = self.racine
+            print("la valeur de la racine est :", x.valeur)
+            self._afficher(x)
 
-    def afficher(self): # parcours infixe
-        if Noeud(self).gauche:   # si il y a un element a gauche 
-                Noeud(self).gauche.afficherArbre() #on recommence la fonction
-                print(Noeud(self).valeur) #sinon on affiche la valeur 
-                print("hello")
-        if Noeud(self).droite: 
-                Noeud(self).droite.afficherArbre() 
-                print("hi")
+    def _afficher(self, nd): #afficher2
+            if(nd.gauche is not None): 
+                    print("la valeur du noeud de gauche est :", nd.gauche.valeur)
+            else:
+                    print("Pas de noeud de gauche")
+            if(nd.droite is not None):
+                    print("la valeur du noeud de droite est :", nd.droite.valeur)
+            else:
+                    print("Pas de noeud de droite")
+    
+            
+            
+
+        
+
+    
 
 '''
     def rechercher(self, rang):
@@ -84,10 +111,12 @@ class Arbre:
 
 
 arbre = Arbre() #ici on cree notre arbre ce qui va creer notre racine
-arbre.ajouter(1)
-arbre.ajouter(2) #ici on remplit le premier noeud
-arbre.ajouter(3) 
+arbre.ajouter(4)
+arbre.ajouter(5)
 arbre.afficher()
+
+
+
 
 '''
 noeud.afficherArbre()
