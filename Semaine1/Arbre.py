@@ -41,6 +41,7 @@ class Arbre:
         print("initarbre")
         self.racine = None 
 
+
     def ajouter(self, val):
         if(self.racine == None):  #si pas de racine devient la racine
             print("la racine est vide")
@@ -78,24 +79,72 @@ class Arbre:
             print("la valeur de la racine est :", x.valeur)
             self._afficher(x)
 
+    
     def _afficher(self, nd): #afficher2
             if(nd.gauche is not None): 
-                    print("la valeur du noeud de gauche est :", nd.gauche.valeur)
+                    print("sous le noeud", nd.valeur ,"a gauche il y a le noeud ", nd.gauche.valeur)
+                    self._afficher(nd.gauche)
+
             else:
-                    print("Pas de noeud de gauche")
-            if(nd.droite is not None):
-                    print("la valeur du noeud de droite est :", nd.droite.valeur)
+                    print("Pas de noeud inferieur a gauche pour le noeud", nd.valeur)
+
+            if(nd.droite is not None):              
+                    print("sous le noeud", nd.valeur ,"a droite il y a le noeud ", nd.droite.valeur)
+                    self._afficher(nd.droite)
             else:
-                    print("Pas de noeud de droite")
+                    print("Pas de noeud inferieur a droite pour le noeud", nd.valeur)
     
             
-            
+            '''
+Écrire la méthode pour supprimer un noeud donné 
+en distinguant trois cas :
+Le noeud est une feuille -> suppression simple
 
-        
+Le noeud a un seul enfant -> il est remplacé par lui
 
-    
-
+Le noeud à deux enfants, on le remplace alors par le noeud 
+le plus proche, c’est à dire le noeud le plus à droite 
+de l’arbre gauche ou le plus à gauche de l'arbre droit.
 '''
+   '''
+    # Given a binary search tree and a key, this function 
+    # delete the key and returns the new root 
+    def suppimwe(root, key): 
+    
+        # Base Case 
+        if root is None: 
+            return root  
+    
+        # If the key to be deleted is smaller than the root's 
+        # key then it lies in  left subtree 
+        if key < root.key: 
+            root.left = deleteNode(root.left, key) 
+    
+        # If the kye to be delete is greater than the root's key 
+        # then it lies in right subtree 
+        elif(key > root.key): 
+            root.right = deleteNode(root.right, key) 
+    
+        # If key is same as root's key, then this is the node 
+        # to be deleted 
+        else: 
+            
+            # Node with only one child or no child 
+            if root.left is None : 
+                temp = root.right  
+                root = None 
+                return temp  
+                
+            elif root.right is None : 
+                temp = root.left  
+                root = None
+                return temp 
+
+        '''
+
+    
+'''
+
     def rechercher(self, rang):
         if rang < self.v.getRang() :
             if self.gauche is None:
@@ -113,8 +162,11 @@ class Arbre:
 arbre = Arbre() #ici on cree notre arbre ce qui va creer notre racine
 arbre.ajouter(4)
 arbre.ajouter(5)
+arbre.ajouter(3)
+arbre.ajouter(2)
+arbre.ajouter(6)
 arbre.afficher()
-
+arbre.supprimer(6)
 
 
 
