@@ -106,41 +106,25 @@ Le noeud à deux enfants, on le remplace alors par le noeud
 le plus proche, c’est à dire le noeud le plus à droite 
 de l’arbre gauche ou le plus à gauche de l'arbre droit.
 '''
-   '''
-    # Given a binary search tree and a key, this function 
-    # delete the key and returns the new root 
-    def suppimwe(root, key): 
-    
-        # Base Case 
-        if root is None: 
-            return root  
-    
-        # If the key to be deleted is smaller than the root's 
-        # key then it lies in  left subtree 
-        if key < root.key: 
-            root.left = deleteNode(root.left, key) 
-    
-        # If the kye to be delete is greater than the root's key 
-        # then it lies in right subtree 
-        elif(key > root.key): 
-            root.right = deleteNode(root.right, key) 
-    
-        # If key is same as root's key, then this is the node 
-        # to be deleted 
-        else: 
-            
-            # Node with only one child or no child 
-            if root.left is None : 
-                temp = root.right  
-                root = None 
-                return temp  
-                
-            elif root.right is None : 
-                temp = root.left  
-                root = None
-                return temp 
+    def supprimer(self, nd): 
+                nd = Noeud(nd)
+                if(nd.gauche is None and nd.droite is None):
+                    del nd.gauche
+                    del nd.droite
+                    del nd.valeur
+                    print("Noeud supprime")
 
-        '''
+                elif(nd.gauche is None and nd.droite is not None):
+                    Noeud(nd).valeur = nd.droite.valeur 
+                    print("Noeud remplace")
+                elif(nd.gauche is not None and nd.droite is None):
+                    Noeud(nd).valeur = nd.gauche.valeur
+                    print("Noeud remplace")
+                else:
+                   print("solution to be found")
+
+
+        
 
     
 '''
@@ -167,6 +151,7 @@ arbre.ajouter(2)
 arbre.ajouter(6)
 arbre.afficher()
 arbre.supprimer(6)
+arbre.afficher()
 
 
 
