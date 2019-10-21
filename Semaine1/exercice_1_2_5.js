@@ -102,7 +102,8 @@ class Noeud {
             //on descend et on applique infixe sur les elements de gauche
             
              values.push(this.valeur); 
-        //on ajoute l element de depart au tableau
+        //on ajoute l element de depart au tableau dans tous les cas
+
         if (this.droite !== undefined)
             values = values.concat(this.droite.infixe());
         return values;
@@ -124,6 +125,7 @@ class Noeud {
 }
 
 class Arbre {
+    //ici cette classe nous permet de savoir ou est la racine
     constructor() {
         this.racine = undefined;
     }

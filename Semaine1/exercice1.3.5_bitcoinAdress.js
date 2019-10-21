@@ -19,12 +19,30 @@ class PublicKey {
         //ou grâce à la notation usuelle (avec les crochets).
 
 
+        //0x04 = 04 (hex) = 4 (dec) (= 0100 (bin))
+
+
+
     }
+
+
+    //Calculer le hash SHA 256 puis RIPEMD160 
+    //(voir librairies dans le cours), on appelle ce 
+    // résultat hash160 
+
+
 
     hash160() {
         let sha256Buffer = crypto.createHash("sha256").update(this.toBuffer()).digest();
         return crypto.createHash("ripemd160").update(sha256Buffer).digest();
     }
+
+
+    /*
+
+
+    */
+
 
     addIdChecksum() {
         let hash160Buffer = this.hash160();
@@ -33,6 +51,10 @@ class PublicKey {
         checksumBuffer = crypto.createHash("sha256").update(checksumBuffer).digest();
         return Buffer.concat([idBuffer, checksumBuffer.subarray(0, 4)]);
     }
+
+
+    //Convertir le nombre en base 58
+
 
     toAdressString() {
         return base58.encode(this.addIdChecksum());
