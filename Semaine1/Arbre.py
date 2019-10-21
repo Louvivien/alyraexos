@@ -31,10 +31,7 @@ class Noeud:
             self.gauche = None
             self.droite = None
             self.valeur = v  
-
-   
-            
-        
+  
         
 class Arbre:
     def __init__(self):
