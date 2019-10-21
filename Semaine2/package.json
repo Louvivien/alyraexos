@@ -1,0 +1,17 @@
+{
+  "name": "semaine2",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "exercice1.2.8_arbremerkle.js",
+  "dependencies": {
+    "base-58": "0.0.1",
+    "base58": "^2.0.1",
+    "bs58": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
