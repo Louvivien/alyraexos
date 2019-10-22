@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<HEAD>
+    <style>
+    .floating-card {
+        float: left;
+        margin: 15px;
+        max-width: 350px;
+        max-height: 250px;
+
+                }
+    </style>
+
+    <title>
+            Outil d’analyse Bitcoin
+    </title>
+    <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</HEAD>
+<body>
+
+    <p class="h1">Outil d’analyse Bitcoin</p>
+
+
+    <div class="row">
+            <div class="col-sm-6">
+              <div class="floating-card card">
+                <div class="card-body">
+                  <h5 class="card-title">Conversion Hexadécimal > Decimal</h5>
+                  <p class="card-text">
+                        Hexadécimal :  <input type="text" value="C921" id="hle0"><br>
+                        Decimal : <span type="text" id="decimal0"></span><br>
+                    </p>
+                    <button class="btn btn-primary" id="convertHexaDE">Convertir</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <div class="floating-card card">
+                <div class="card-body">
+                  <h5 class="card-title">Conversion Decimal > Hexadécimal</h5>
+                  <p class="card-text">
+                        Decimal : <br>
+                         <input type="text" value="172" id="deci0"><br>
+                        Hexadécimal : <span type="text" id="hexa0"></span><br></p>
+                        <button class="btn btn-primary" id="convertDeciHE">Convertir</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+                    <div class="floating-card card">
+                      <div class="card-body">
+                        <h5 class="card-title">Conversion Little Endian -> Hexadécimal</h5>
+                        <p class="card-text">
+                        Hexa Little Endian :  <input type="text" value="000001FF" id="hle"><br>
+                        Hexadécimal :  <span type="text" id="hexadecimal"></span><br>
+                        </p>
+                        <button class="btn btn-primary" id="convertHexaLE">Convertir</button>
+                      </div>
+                    </div>
+                  </div>
+
+            <div class="col-sm-6">
+                    <div class="floating-card card">
+                      <div class="card-body">
+                        <h5 class="card-title">getinfo</h5>
+                        <p class="card-text">
+                        Info :  <span type="text" id="info"></span><br>
+
+                        </p>
+                        <button class="btn btn-primary" id="getinfo">getinfo</button>
+                      </div>
+                    </div>
+                  </div>
+
+           
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+<script>
+
+    function convertHexaToDeci(h){
+        var result = 0, digitValue;
+        hex = h.toLowerCase();
+        for(var i = 0; i < hex.length; i++){
+            digitValue = '0123456789abcdefgh'.indexOf(hex[i]);
+            result = result * 16 + digitValue;
+
+        }
+        return result;
+        
+        }
+
+    function convertDeciToHexa(h){
+        hexa = h.toString(16)
+        if (h.lenght % 2 == 1){
+            hexa = '0' + hexa
+
+        }
+        return hexa;
+        
+        }
+
+    function convertHexaLittleEndianToHexa(h){
+        if (h.length %2 ==1){
+            h = '0' +h
+        }
+        let retour = ""
+        for (var i = 0; i < h.length-1; i+=2){
+            retour = h[i] + h[i+1]+ retour
+        }
+        return retour
+    }
+
+    function getblockchainInfo(h){
+        const Client = require('bitcoin-core');
+        const client = new Client({ 
+        network: 'regtest', 
+        username: 'user', 
+        password: 'pass', 
+        port: 18443 
+        });
+    client.getBlockchainInfo().then((help) => console.log(help));
+    }
+
+
+    //<h3>Conversion Hexadecimal > Decimal</h3>
+    document.getElementById('convertHexaDE').addEventListener('click', event => {
+        deci = document.getElementById('hle0').value
+        hexa = convertHexaToDeci(deci)
+        document.getElementById('decimal0').innerHTML = hexa
+    })
+
+
+    //<h3>Conversion Decimal > Hexadecimal</h3>
+    document.getElementById('convertDeciHE').addEventListener('click', event => {
+        hle0 = document.getElementById('deci0').value
+        deci = convertHexaToDeci(hle0)
+        document.getElementById('hexa0').innerHTML = deci
+    })
+
+    //<h3>Conversion Little Endian -> Hexadécimal</h3>
+    document.getElementById('convertHexaLE').addEventListener('click', event => {
+        hle = document.getElementById('hle').value
+        hexa = convertHexaLittleEndianToHexa(hle)
+        document.getElementById('hexadecimal').innerHTML = '0x' + hexa
+
+    })
+
+    //Recupere infos blockchain
+    document.getElementById('getinfo').addEventListener('click', event => {
+        info = getblockchainInfo()
+        hle = document.getElementById('info').info
+    })
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+    
+</body>
+
+</html>
+
