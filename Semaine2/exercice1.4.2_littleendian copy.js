@@ -1,9 +1,8 @@
 /*Écrire un programme qui convertisse un nombre décimal en sa version hexadécimal little endian et hexadécimal big endian sans avoir recours aux fonctions de conversion du langage utilisé
 
 conversion(466321)
-466321  
-→ 0x 07 1d 91 (big endian)
-→ 0x 91 1d 07 (little endian)
+466321  → 0x 07 1d 91 (big endian)
+    → 0x 91 1d 07 (little endian)
     
     a finir
     
