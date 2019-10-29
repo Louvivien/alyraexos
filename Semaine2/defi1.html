@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -68,7 +69,11 @@
                       <div class="card-body">
                         <h5 class="card-title">getinfo</h5>
                         <p class="card-text">
-                        Info :  <span type="text" id="info"></span><br>
+                        Info :  <span type="text" id="info"></span>
+                        <div id="mydiv"></div>
+
+
+                        <br>
 
                         </p>
                         <button type="button" onClick="JSONTest()" class="btn btn-primary" id="getinfo">getinfo</button>
@@ -84,6 +89,9 @@
 
 
           </div>
+
+
+
 
 
 
@@ -162,29 +170,12 @@
     //Recupere infos blockchain
     
     JSONTest = function() {
-      $.ajax({
-            url : "https://blockchain.info/rawblock/0000000000000bae09a7a393a8acded75aa67e46cb81f7acaa5ad94f9eacd103",
-            type : 'GET',
-            async: false,
-            type : "application/json",
-            beforeSend: function (xhr) {
-              if (xhr && xhr.overrideMimeType) {
-                xhr.overrideMimeType('application/json;charset=utf-8');
-              }
-            },
-            dataType : "json",
-            success : function(result) {
-              var json = result;
-              obj = JSON.parse(result);
-              console.log(obj.time);
-              
-              
-                                      },
-        /*   error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status);
-          alert(thrownError);
-          } */
-            });
+    
+      $.get('https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412')
+  .then(function(d) {console.log(d)});
+        
+
+
         };
 
 </script>
