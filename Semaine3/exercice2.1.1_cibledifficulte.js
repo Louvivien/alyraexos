@@ -3,7 +3,7 @@
 
 
 function calculerDifficulte(target){
-    original_target = "26959535291011309493156476344723991336010898738574164086137773096960"
+    var original_target = "26959535291011309493156476344723991336010898738574164086137773096960"
     difficulte = original_target / target
     return difficulte
 }
