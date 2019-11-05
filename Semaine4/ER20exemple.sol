@@ -20,11 +20,11 @@ interface ERC20vivien {
 pragma solidity ^0.5.0;
 
 
-contract ERC20vivien {
+contract ERC20veth {
     string public name = "VivienCoin";
-    string public symbol = "VIC";
+    string public symbol = "VETH";
     uint public decimals = 18;
-    uint private _totalSupply = 100000;
+    uint private _totalSupply = 1000000000000000000000;
     mapping (address => uint256) private _balances;
     //on va chercher une valeur associe a adresse qui va etre notre variable _balances
     
@@ -33,6 +33,7 @@ contract ERC20vivien {
     
     constructor() public{
         _balances[msg.sender] = _totalSupply;
+        //toute la balance est sur le comote qui q deploye le contrat 
     }
 
 
