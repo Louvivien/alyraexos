@@ -1,0 +1,30 @@
+=============== Nov 19, 2019 (CET) ===============
+16:27:22.734395 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:27:22.740530 db@open opening
+16:27:22.744040 version@stat F·[] S·0B[] Sc·[]
+16:27:22.756013 db@janitor F·2 G·0
+16:27:22.756143 db@open done T·15.581469ms
+16:27:22.778181 db@close closing
+16:27:22.779558 db@close done T·1.375068ms
+=============== Nov 19, 2019 (CET) ===============
+16:27:28.475941 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:27:28.476472 version@stat F·[] S·0B[] Sc·[]
+16:27:28.476516 db@open opening
+16:27:28.476632 journal@recovery F·1
+16:27:28.511885 journal@recovery recovering @1
+16:27:28.524579 memdb@flush created L0@2 N·622 S·50KiB "\x02d\xfc..\x19Ba,v429":"\xfe\x88\xcf..H\xef\xcc,v362"
+16:27:28.546802 version@stat F·[1] S·50KiB[50KiB] Sc·[0.25]
+16:27:28.564988 db@janitor F·3 G·0
+16:27:28.565201 db@open done T·88.663939ms
+=============== Nov 19, 2019 (CET) ===============
+16:29:20.160878 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:29:20.162096 version@stat F·[1] S·50KiB[50KiB] Sc·[0.25]
+16:29:20.162224 db@open opening
+16:29:20.162739 journal@recovery F·1
+16:29:20.188224 journal@recovery recovering @3
+16:29:20.198979 memdb@flush created L0@5 N·3 S·448B "Dat..ion,v624":"cli..'a\x04,v626"
+16:29:20.222045 version@stat F·[2] S·51KiB[51KiB] Sc·[0.50]
+16:29:20.228341 db@janitor F·4 G·0
+16:29:20.228450 db@open done T·66.139641ms
+17:01:39.835287 db@close closing
+17:01:39.836042 db@close done T·764.138µs

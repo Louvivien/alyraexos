@@ -1,0 +1,1 @@
+geth --datadir "~/exercices/Semaine6/noeud2/" --syncmode 'full' --networkid "4224" --port "30305" --rpc --rpcaddr 'localhost' --rpcport "8546" --rpcapi 'personal,db,eth,net,web3,txpool,miner,clique' --mine --nodiscover --gasprice '0' --allow-insecure-unlock --unlock "0x76A725b99a76D4962173950d1a37a3141075F1a0" --password "./pwd.txt"
