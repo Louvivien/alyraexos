@@ -2,6 +2,7 @@
 import assertRevert from "zeppelin-solidity/test/helpers/assertRevert";
 
 
+
 const GradientToken = artifacts.require("GradientToken");
 
 contract("Gradient token", accounts => {
