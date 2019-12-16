@@ -24,33 +24,27 @@ contract TokenAuction {
     });
     tokenIdToAuction[_tokenId] = _auction;
   }
+
+  function bid( uint256 _tokenId ) public payable {
+    Auction memory auction = tokenIdToAuction[_tokenId];
+    require(auction.seller != address(0));
+    require(msg.value >= auction.price);
+
+    address seller = auction.seller;
+    uint128 price = auction.price;
+
+    delete tokenIdToAuction[_tokenId];
+
+    seller.transfer(price);
+    nonFungibleContract.transfer(msg.sender, _tokenId);
+  }
+
+  function cancel( uint256 _tokenId ) public {
+    Auction memory auction = tokenIdToAuction[_tokenId];
+    require(auction.seller == msg.sender);
+
+    delete tokenIdToAuction[_tokenId];
+
+    nonFungibleContract.transfer(msg.sender, _tokenId);
+  }
 }
-Let’s add tests for this function. We want to check that TokenAuction claims the ownership of the token and that it creates an auction associated with that token.
-
-Add the following block to your test/TokenAuctionTest.js
-
-describe("createAuction", () => {
-  let nft, auctionContract, tokens;
-
-  before(async () => {
-    nft = await GradientToken.new();
-    auctionContract = await TokenAuction.new(nft.address);
-
-    await nft.mint("#ff00dd", "#ddddff");
-    tokens = await nft.tokensOf(accounts[0]);
-
-    await nft.approve(auctionContract.address, tokens[0]);
-    await auctionContract.createAuction(tokens[0], 100);
-  });
-
-  it("Should take ownership of a token", async () => {
-    const tokenOwner = await nft.ownerOf(tokens[0]);
-    assert.equal(tokenOwner, auctionContract.address);
-  });
-
-  it("Should create new auction", async () => {
-    const auction = await auctionContract.tokenIdToAuction(tokens[0]);
-    assert.equal(auction[0], accounts[0]);
-    assert.equal(auction[1].toNumber(), 100);
-  });
-});
