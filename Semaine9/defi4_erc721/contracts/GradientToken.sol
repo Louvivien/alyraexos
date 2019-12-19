@@ -1,4 +1,4 @@
-pragma solidity 0.5.24;
+pragma solidity 0.4.24;
 
 import 'zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -6,7 +6,7 @@ import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 
 
-contract GradientToken is ERC721, Ownable {
+contract GradientToken is ERC721Token, Ownable {
     /*Ownable allows managing authorization. 
     It assigns ownership to deployer (when the contract is deployed) 
     and adds modifier onlyOwner that allows you to restrict certain methods

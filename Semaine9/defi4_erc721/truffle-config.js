@@ -24,6 +24,8 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
+
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -36,17 +38,11 @@ module.exports = {
    */
 
   networks: {
-    // Useful for testing. The `development` name is special - truffle uses it by default
-    // if it's defined here and no other network is specified at the command line.
-    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
-    // tab if you use this network and you must also set the `host`, `port` and `network_id`
-    // options below to some value.
-    //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "5777" // Match any network id
+    }
 
     // Another network with more advanced options...
     // advanced: {
@@ -98,19 +94,3 @@ module.exports = {
   }
 }
 
-require("babel-register")({
-  ignore: /node_modules\/(?!zeppelin-solidity)/
-});
-require("babel-polyfill");
-
-module.exports = {
-  // See <https://truffleframework.com/docs/advanced/configuration>
-  // to customize your Truffle configuration!
-  networks: {
-    development: {
-      host: "127.0.0.1",
-      port: 7545,
-      network_id: "5777" // Match any network id
-    }
-  }
-};
