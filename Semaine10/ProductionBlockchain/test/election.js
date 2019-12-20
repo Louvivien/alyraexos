@@ -43,6 +43,12 @@ contract("Election", function(accounts){
           //on lui dit qu'elle account doit voter
         }).then(function(receipt) {
           //on recupere ce qui nous revient
+          assert.equal(receipt.logs.length, 1, "an event was triggered");
+          //on verifie quil y a un log 
+          assert.equal(receipt.logs[0].event, "votedEvent", "the event type is correct");
+          //on accede a l'event
+          assert.equal(receipt.logs[0].args._candidateId.toNumber(), candidateId, "the candidate id is correct");
+          //on verifie que le candidate id est le bon
           return electionInstance.voters(accounts[0]);
           //on va lire le mapping des voters
         }).then(function(voted) {
