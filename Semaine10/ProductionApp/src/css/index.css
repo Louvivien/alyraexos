@@ -1,6 +1,43 @@
 
 /* GENERAL */
 
+article {
+	position: relative;
+	margin: 50px auto;
+	padding: 40px 0;
+	width: 800px;
+	}
+	article::before,
+	article::after {
+	content: "";
+	width: 790px;
+	height: 250px;
+	position: absolute;
+	left: -2px;
+	top: -5px;
+	z-index: -1;
+	-moz-transform: rotate(-2deg);
+	-webkit-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+	}
+	article::after {
+	left: 0;    
+	-moz-transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+	}
+	article,
+	article::before,
+	article::after {
+	background: #fff;
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+	box-shadow: 0 0 4px rgba(0,0,0,0.4);
+	}
+	
+	
+
+
 body {
   font-size: 1em;
 	font-family: Helvetica, Arial, sans-serif;
