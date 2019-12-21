@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contrat de coproduction</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">Contrat de coproduction</h1>
+          <hr/>
+          <br/>
+          <div id="loader">
+            <p class="text-center">Chargement en cours...</p>
+          </div>
+          
+          <div id="content" style="display: none;">
+
+            <br/>
+            <br/>
+
+            <div class="container">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <br>
+                  <button class="btn btn-default pull-right add-row"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered" id="editableTable">
+                    <thead>
+                      <tr>
+                        <th>Producer</th>
+                        <th>Birthday</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Edit</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-id="1">
+                        <td data-field="name">Dave Gamache</td>
+                        <td data-field="birthday">May 19, 2015</td>
+                        <td data-field="age">26</td>
+                        <td data-field="sex">Male</td>
+                        <td>
+                          <a class="button button-small edit" title="Edit">
+                            <i class="fa fa-pencil"></i>
+                          </a>
+                          
+                          <a class="button button-small edit" title="Delete">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr data-id="2">
+                        <td data-field="name">Dwayne Johnson</td>
+                        <td data-field="birthday">May 19, 2015</td>
+                        <td data-field="age">42</td>
+                        <td data-field="sex">Male</td>
+                        <td>
+                          <a class="button button-small edit" title="Edit">
+                            <i class="fa fa-pencil"></i>
+                          </a> <a class="button button-small edit" title="Delete">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr data-id="3">
+                        <td data-field="name">Halyna Nadia</td>
+                        <td data-field="birthday">May 25, 2015</td>
+                        <td data-field="age">22</td>
+                        <td data-field="sex">Female</td>
+                        <td>
+                          <a class="button button-small edit" title="Edit">
+                            <i class="fa fa-pencil"></i>
+                          </a> <a class="button button-small" title="Delete">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+            <br/>
+            <br/>
+
+
+
+
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Pourcentages</th>
+                </tr>
+              </thead>
+              <tbody id="producersResults">
+              </tbody>
+            </table>
+            <hr/>
+
+
+            <form onSubmit="App.addPercentage(); return false;">
+              <div class="form-group">
+                <label for="producersSelect">Selectionner un producteur</label>
+                <select class="form-control" id="producersSelect">
+                </select>
+                <input type="number" min="1" max="100" id="producerShare"/>
+              </div>
+              <button type="submit" class="btn btn-primary">Vote</button>
+              <hr />
+            </form>
+            
+            <p id="accountAddress" class="text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

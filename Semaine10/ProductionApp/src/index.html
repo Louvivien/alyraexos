@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contrat de coproduction</title>
+
+    <!-- Bootstrap -->
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <div class="container" style="width: 650px;"></div>
+    
+    <form class="form" onSubmit="App.addProd(); return false;">
+    <h1>Contrat de coproduction</h1>
+
+    <div id="loader">
+        <p class="text-center">Chargement en cours...</p>
+    </div>
+
+    <div id="content" style="display: none;">     
+
+        <h3><small class="text-muted">Construiser votre contrat et enregistrer le dans la blockchain</small></h3>
+        
+    <div class="row">
+
+          <section id="main-content">
+              
+            <h2>Coproducteurs</h2>
+          
+            <h5><small class="text-muted">Ajouter des coproducteurs sur le contrat : qui sont les signataires du contrat ?</small></h5>
+
+            <div class="display_blockchain">
+
+            <table class="table cop">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Part producteur</th>
+                  </tr>
+                </thead>
+                <tbody id="producersResults">
+                </tbody>
+              </table>
+
+            </div>
+            
+            <!-- <h4>Add Content</h4> -->
+            <div class="add-btn" id="add-main-1"><span class="btn-icon blue-btn-icon-1"><div class="plus">+</div></span><h4 id="rac-h4">Ajouter un coproducteur</h4></div>
+            <div id="rac-form-1" class="dropped-form">
+              <br>
+              <input type="text" id="producerName" placeholder="Nom" />
+              
+              <input  type="number" id="producerShare" min="1" max="99" placeholder="Part Producteur" ><br>
+              
+              
+
+              <br>
+              <button type="submit" name="submit-btn" id="submit-btn" style="clear: both" >Enregistrer dans la blockchain</button>
+            </div>
+          
+            
+
+          </form>
+          </section>
+
+          
+          <section id="right-sidebar">
+            <h2>Infos projet</h2>
+
+            <p>Ajouter des infos projet</p>
+
+
+            <fieldset>
+
+                <br>
+                <form class="form" >
+                <input type="checkbox" id="nnw-checked" />
+                <label for="nnw-0">SmartContract projet</label>
+                <button type="submit" name="submit-btn" id="submit-btn" style="clear: both" >Enregistrer dans la blockchain</button>
+                <br>
+                <!-- section pliee -->
+                <span id="nnw-form">
+                <input type="text" name="nnw[0]" id="nnw-title-0" value="Adresse" /><br>
+                
+                </span>
+              </form>
+
+
+            <br>
+            <form class="form" >
+            <input type="checkbox" id="wr-checked" />
+            <label for="wr-0">Ajouter des recettes projet</label><br>
+            <!-- section pliee -->
+            <span id="wr-form">
+                <button type="submit" name="submit-btn" id="submit-btn" style="clear: both" >Enregistrer dans la blockchain</button>
+                <input type="text" name="wr[0]" value="Nom du contrat" class="" style="width: 70px" /><br>
+                <input type="text" name="wr[1]" value="Description" class="" /><br>
+                <input type="text" name="wr[2]" value="Adresse" class="" /><br>
+                
+                <a href="#" id="wr-add">+ Ajouter Contrat</a><br><br>
+            </span>
+          </form>
+            
+          
+            <br>
+            <input type="checkbox" id="nm-checked" />
+            <label for="nm-0">New Members</label><br>
+            <!-- section pliee -->
+            <span id="nm-form">
+            <input type="file" name="nm[0]" value="Upload Image" /><br>
+            <input type="text" name="nm[1]" value="Name" /><br>
+            <input type="text" name="nm[2]" value="Job Role" /><br>
+            <a href="#" id="nm-add">+ Add Member</a><br><br>
+            </span>
+            
+            
+            
+            </fieldset>
+          </section>
+
+      </div> <!-- row -->
+
+      <div class="row"> <!-- Seconde ligne -->
+
+
+
+        <section id="main-content">
+              
+            <h2>Mandats</h2>
+            <h5><small class="text-muted">Ajouter des mandats au contrat : quels sont les droits des signataires ?</small></h5>
+          
+            <div class="display_blockchain">
+
+            <table class="table cop">
+                <thead>
+                  
+                    <tr>
+                      <th scope="col">Type</th>
+                    </tr>
+                  
+                </thead>
+                <tbody id="mandatsResults">
+                </tbody>
+              </table>
+
+            </div>
+            
+            <!-- <h4>Add Content</h4> -->
+            <form onSubmit="App.addMandat(); return false;">
+            <div class="add-btn" id="add-main-2"><span class="btn-icon red-btn-icon"><div class="plus">+</div></span><h4 id="rac-h4">Ajouter un mandat</h4></div>
+            <div id="rac-form-2" class="dropped-form">
+              <br>
+              <input type="text" id="mandatType" placeholder="Type" />
+              
+              <br>
+              
+              
+
+              <br>
+              <button type="submit" name="submit-btn" id="submit-btn" style="clear: both" >Enregistrer dans la blockchain</button>
+            </form>
+            </div>
+          
+            
+
+          </section>
+
+
+      </div>
+        
+
+    </div> <!-- content -->
+    
+    
+
+    </div> <!-- container -->
+    
+    <footer><p id="accountAddress" class="text-center"></p></footer>
+  
+
+
+    <!-- section de commentaire pour poster en php
+    <?php
+    if (isset($_POST['submit-btn']))
+    {
+      /* ----------------------------------------------
+        GATHER USER GENERATED DATA AND SAVE IT
+      ---------------------------------------------- */
+      
+      $x = 0;
+      //This does nothing
+      //$o = 1;
+      
+      //Get count of items
+      $nnw_count = count($_POST['nnw']);
+      $nm_count = count($_POST['nm']);
+      $wr_count = count($_POST['wr']);
+      echo $nnw_count;
+      echo $nm_count / 2;
+      echo $wr_count / 3;
+    
+      $i = 0;
+      //New & Noteworthy
+      foreach ($_POST['nnw'] as $temp) {
+        //echo $temp;
+        $nnw[$i] = $temp;
+        echo $nnw[$i];
+        $i++;
+      }
+      
+      //New Member
+      foreach ($_POST['nm'] as $temp) {
+        //echo $temp;
+        $nm[$i] = $temp;
+        echo $nm[$i];
+        $i++;
+      }
+      
+      /*		
+      //New Member
+      $nm_img[$x] = $_POST["nm"][0];
+      $nm_name[$x] = $_POST["nm"][1];
+      $nm_jobrole[$x] = $_POST["nm"][2];
+      */
+      
+      //Web Resources
+      $wr_date[$x] = $_POST["wr"][0];
+      $wr_topic[$x] = $_POST["wr"][1];
+      $wr_link[$x] = $_POST["wr"][2];
+      
+      //Recently Added Content
+      $rac = $_POST["rac"];
+      $pwc = $_POST["pwc"];
+      
+      // 1. check if file is present
+      // 2. move file to "imgs" directory
+      // 3. save file path into a variable
+      if(array_key_exists('nm', $_FILES)) {	
+        if(move_uploaded_file($_FILES['nm']['tmp_name'][0], 'imgs/' . $_FILES['nm']['name'][0])) {
+            //echo("<p>File uploaded successfully!</p>\r\n");
+          $filePath = 'imgs/' . $_FILES['nm']['name'][0];
+        } else {
+            //echo("<p>There was an error moving the file.</p>\r\n");
+        }
+      }
+      
+      //open template file and get data
+      $templateData = file_get_contents("template.html");
+    
+      //new data added to template content
+      $newData = str_replace("start here", "<p class='new-and-noteworthy'>$nnw_title[0]</p> \n<p class='new-members'>$nm_img[0] $nm_name[0] $nm_jobrole[0]</p> \n<img src='$filePath' class='file'/> \n", $templateData);
+    
+      //compile html doc
+      file_put_contents("newsletter.html", $newData);
+    }
+    ?>
+    -->
+ 
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+  
+</html>
