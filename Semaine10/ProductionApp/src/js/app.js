@@ -363,7 +363,7 @@ $('#wr-checked').click(function() {
 
 var wr = 1;
 $("#wr-add").click(function() {
-  $('<br><input type="text" name="wr['+ (wr * 3) +']" value="Nom du contrat" class="" /><br><input type="text" name="wr['+ ((wr * 3)+1) +']" value="Description" class="" /><br><input type="text" name="wr['+ ((wr*3)+2) +']" value="Adresse" class="" /><br>').animate({ opacity: 'toggle'}, 500).insertBefore('#wr-add');
+  $('<br><input type="text" name="wr['+ (wr * 3) +']" placeholder="Reference" class="" /><br><input type="number" name="wr['+ ((wr * 3)+1) +']" placeholder="Montant en euros" class="" /><br><input type="text" name="wr['+ ((wr*3)+2) +']" placeholder="Description" class="" /><br>').animate({ opacity: 'toggle'}, 500).insertBefore('#wr-add');
   wr++;
 });
 
