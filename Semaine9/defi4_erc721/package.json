@@ -35,7 +35,7 @@
     "decamelize": "^1.2.0",
     "dom-walk": "^0.1.1",
     "drbg.js": "^1.0.1",
-    "elliptic": "^6.5.2",
+    "elliptic": "^6.5.4",
     "emoji-regex": "^7.0.3",
     "end-of-stream": "^1.4.4",
     "ethereumjs-util": "^6.1.0",
